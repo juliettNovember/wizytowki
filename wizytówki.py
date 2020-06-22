@@ -38,7 +38,7 @@ class BusinessContact(BaseContact):
 
 @property
 def label_length(self):
-    return sum([len(self.name_and_surname)], 1)
+    return sum([len(self.name_and_surname)])
 
 person = BusinessContact(name_and_surname = fake.name_and_surname(), number = fake.number(), email = fake.email(), position = fake.position(), company = fake.company(), business_number = fake.business_number())
 
@@ -61,4 +61,4 @@ def create_contacts(card, quantity):
     return random_card
 
 
-    print(create_contacts("business"))
+print(create_contacts("business"))
