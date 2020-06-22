@@ -1,5 +1,5 @@
 from faker import Faker
-fake = Faker("pl_PL")
+fake = Faker()
 
 class BaseContact:
     def __init__ (self, name_and_surname, number, email):
@@ -40,7 +40,7 @@ class BusinessContact(BaseContact):
 def label_length(self):
     return sum([len(self.name_and_surname)])
 
-person = BusinessContact(name_and_surname = fake.name_and_surname(), number = fake.number(), email = fake.email(), position = fake.position(), company = fake.company(), business_number = fake.business_number())
+person = BusinessContact(name_and_surname = fake.name(), number = fake.phone_number(), email = fake.email(), position = fake.job(), company = fake.company(), business_number = fake.phone_number())
 
 card = ("private", "business")
 quantity = 3
@@ -48,17 +48,18 @@ contact = ""
 random_card = []
 
 def create_contacts(card, quantity):
-    if type == "private":
+
+    if card == "private":
         for i in range(quantity):
-            contact = f"{fake.name_and_surname()}, {fake.number()}, {fake.email()}"
+            contact = f"{fake.name()}, {fake.phone_number()}, {fake.email()}"
             random_card.append(contact)
-    elif type == "business":
+    elif card == "business":
         for i in range (quantity):
-            contact = f"{fake.name_and_surname()}, {fake.business_number()}, {fake.email()}, {fake.position()}, {fake.company()}"
+            contact = f"{fake.name()}, {fake.phone_number()}, {fake.email()}, {fake.job()}, {fake.company()}"
             random_card.append(contact)
     else:
         exit(1)
     return random_card
 
 
-print(create_contacts("business"))
+print(create_contacts("business", 1))
