@@ -16,9 +16,9 @@ class BaseContact:
     def contact(self):
         return f"Wybieram numer {self.number} i dzwonię do {self.name_and_surname}"
 
-@property
-def label_length(self):
-    return sum([len(self.first_name), len(self.last_name), 1])
+    @property
+    def label_length(self):
+        return sum([len(self.first_name), len(self.last_name), 1])
     
 class BusinessContact(BaseContact):
     def __init__(self, position, company, business_number, *args, **kwargs):
@@ -36,9 +36,9 @@ class BusinessContact(BaseContact):
     def contact_business(self):
         return f"Wybieram numer {self.business_number} i dzwonię do {self.name_and_surname}"
 
-@property
-def label_length(self):
-    return sum([len(self.name_and_surname)])
+    @property
+    def label_length(self):
+        return sum([len(self.first_name), len(self.last_name), 1])
 
 person = BusinessContact(name_and_surname = fake.name(), number = fake.phone_number(), email = fake.email(), position = fake.job(), company = fake.company(), business_number = fake.phone_number())
 
@@ -62,4 +62,8 @@ def create_contacts(card, quantity):
     return random_card
 
 
+
+
 print(create_contacts("business", 1))
+print(label_length)
+
