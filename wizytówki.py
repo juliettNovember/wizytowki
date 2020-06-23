@@ -35,27 +35,16 @@ class BusinessContact(BaseContact):
     def contact_business(self):
         return (f"Wybieram numer {self.number} i dzwonię do {self.name_and_surname}")
 
-    @property
-    def label_length(self):
-        return sum([len(self.first_name), len(self.last_name), 1])
-
 def create_contacts(card, quantity):
-
-    if card == "private":
-        for i in range(quantity):
+    for i in range(quantity):
+        if card == "private":
             card = BaseContact(fake.name(), fake.phone_number(), fake.email())
-            print(card)
-
-    elif card == "business":
-        for i in range (quantity):
-            card = BusinessContact(fake.name(), fake.phone_number(), fake.email(), fake.job(), fake.company())
-            print(card)
-            
-    else:
-        exit(1)
+        elif card == "business":
+            card = BusinessContact(fake.name(), fake.phone_number(), fake.email(), fake.job(), fake.company())    
+        else:
+            exit(1)
     return card
-    
-create_contacts("business", 1)
-calling = BusinessContact(fake.job(), fake.company(), fake.name(), fake.phone_number(), fake.email())
-print(calling.contact_business())
+
+
+print(create_contacts)
 
