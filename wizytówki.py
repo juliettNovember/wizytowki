@@ -35,8 +35,8 @@ class BusinessContact(BaseContact):
     def contact_business(self):
         return (f"Wybieram numer {self.number} i dzwonię do {self.name_and_surname}")
 
-def create_contacts(card, quantity):
-    for i in range(quantity):
+def create_contacts(card):
+    for i in range(1):
         if card == "private":
             card = BaseContact(fake.name(), fake.phone_number(), fake.email())
         elif card == "business":
