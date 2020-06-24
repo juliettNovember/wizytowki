@@ -11,7 +11,7 @@ class BaseContact:
         return f'{self.name_and_surname} {self.number} {self.email}'
 
     def __repr__(self):
-        return f"baseContact(name_and_surname={self.name_and_surname}, phone_number={self.phone_number}, email_address={self.email_address})"
+        return f"baseContact(name_and_surname={self.name_and_surname}, phone_number={self.number}, email_address={self.email})"
 
     def contact(self):
         return f"Wybieram numer {self.number} i dzwonię do {self.name_and_surname}"
@@ -39,12 +39,13 @@ def create_contacts(card, quantity):
     list_of_cards = []
     for i in range(quantity):
         if card == "private":
-            card = BaseContact(fake.name(), fake.phone_number(), fake.email())
-            list_of_cards.append(card)
+            private_c = BaseContact(fake.name(), fake.phone_number(), fake.email())
+            list_of_cards.append(private_c)
         elif card == "business":
-            card = BusinessContact(fake.name(), fake.phone_number(), fake.email(), fake.job(), fake.company()) 
-            list_of_cards.append(card)   
+            business_c = BusinessContact(fake.name(), fake.phone_number(), fake.email(), fake.job(), fake.company()) 
+            list_of_cards.append(business_c)   
         else:
             exit(1)
     return list_of_cards
 
+print(create_contacts("private", 2))
